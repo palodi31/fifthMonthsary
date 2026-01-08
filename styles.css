@@ -331,3 +331,23 @@ body{
   font-weight: 700;
   color: rgba(43,43,43,.72);
 }
+
+/* Video lock screen */
+.video-lock .lock-card {
+  max-width: 360px;
+  padding: 1.25rem 1.25rem 1.4rem;
+  border-radius: 1.5rem;
+  background: rgba(255,255,255,.85);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.lock-icon {
+  font-size: 40px;
+}
+
+.video-lock input {
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  padding: .55rem .9rem;
+}

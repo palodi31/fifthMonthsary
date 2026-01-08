@@ -61,3 +61,44 @@
     });
   });
 })();
+
+// ===============================
+// Video Password Protection
+// ===============================
+const CORRECT_PASSWORD = "080925"; // 🔐 CHANGE THIS
+
+const unlockBtn = document.getElementById("unlockVideoBtn");
+const passwordInput = document.getElementById("videoPassword");
+const errorText = document.getElementById("passwordError");
+const videoLock = document.getElementById("videoLock");
+const videoWrapper = document.getElementById("videoWrapper");
+
+if (unlockBtn) {
+  unlockBtn.addEventListener("click", unlockVideo);
+}
+
+if (passwordInput) {
+  passwordInput.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") unlockVideo();
+  });
+}
+
+function unlockVideo() {
+  const entered = passwordInput.value.trim();
+
+  if (entered === CORRECT_PASSWORD) {
+    videoLock.classList.add("d-none");
+    videoWrapper.classList.remove("d-none");
+
+    // Optional: auto-play once unlocked
+    const video = videoWrapper.querySelector("video");
+    if (video) video.play();
+  } else {
+    errorText.classList.remove("d-none");
+    passwordInput.classList.add("is-invalid");
+
+    setTimeout(() => {
+      passwordInput.classList.remove("is-invalid");
+    }, 600);
+  }
+}
